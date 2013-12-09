@@ -14,6 +14,7 @@ public class Client {
 	// Server IP
 	private static String ipServer = "127.0.0.1";
 	private static int port = 1099;
+	private static boolean isConected = true;
 
 	/**
    * 
@@ -25,9 +26,11 @@ public class Client {
 			// Instance of instanciamos o objeto remoto
 			textAnalyser = (TextAnalyzer) Naming.lookup(ipConfig + MessageI18NUtil.getMessage("server"));
 		} catch (ConnectException e) {
+			isConected = false;
 			System.out.println(MessageI18NUtil.getMessage("error_server_offline"));
 			 e.printStackTrace();
 		} catch (Exception e) {
+			isConected = false;
 			System.out.println(MessageI18NUtil.getMessage("internal_error"));
 			 e.printStackTrace();
 		}
@@ -35,8 +38,10 @@ public class Client {
 
 	public static void main(final String args[]) throws Exception {
 		conect();
+		if(isConected){
+			MainFrame app = new MainFrame(textAnalyser);
+			app.sowFrame();
+		}
 		
-		MainFrame app = new MainFrame(textAnalyser);
-		app.sowFrame();
 	}
 }

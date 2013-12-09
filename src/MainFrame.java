@@ -79,7 +79,7 @@ public class MainFrame extends JFrame {
 	}
 
 	protected void createFrame() {
-		setSize(600, 600);
+		setSize(700, 700);
 
 		getContentPane().setLayout(new BorderLayout());
 		getContentPane().add(spText);
@@ -87,7 +87,7 @@ public class MainFrame extends JFrame {
 	}
 
 	protected void createFrameWithReportArea() {
-		setSize(600, 600);
+		setSize(700, 700);
 
 		spReport.setVisible(true);
 		getContentPane().add(spReport);
@@ -95,6 +95,7 @@ public class MainFrame extends JFrame {
 		splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, spText,
 				reportArea);
 		getContentPane().add(splitPane, BorderLayout.CENTER);
+		splitPane.setDividerLocation(350);
 		splitPane.setContinuousLayout(true);
 	}
 
